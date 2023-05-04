@@ -6,15 +6,16 @@ public class Final01Main {
 	// (주의) final 멤버 변수는 반드시 선언과 동시에 초기화 ( 혹은 생성자에서 초기화) 해야 한다
 	final int NUM1 = 1;
 //	final int NUM2; // 에러 : 왜? 선언과 동시에 초기화해야되~
-	final int NUM3;
+final int NUM3;
+	private int num4;
 
 	public Final01Main(){
 //		NUM1 = 10;
 		NUM3 = 20;
 	}
 
-	public Final01Main(int NUM3) {
-		this.NUM3 = NUM3;
+	public Final01Main(int num3) {
+		this.NUM3 = num3;
 	}
 
 	public static void main(String[] args) {

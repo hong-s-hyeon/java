@@ -20,17 +20,16 @@ package com.lec.java.access01;
 import com.lec.java.access02.Test02;
 
 
-public class Access01Main {
-
+public class Access01Main extends Test02{
 	public static void main(String[] args){
 		System.out.println("접근권한 수식어(Access Modifier)");
 
 		Test01 t1 = new Test01();
 
 //		t1.privateNum = 10;		// 자기 클래스					// x
-		t1.defaultNum = 10;		// 자기 클래스, 같은 패키지		// x o
-		t1.protectedNum = 10;	// 자기 클래스, 같은 패키지, 상속	// x o
-		t1.publicNum = 10;		// 어디에서나					// o
+		t1.defaultNum = 10;        // 자기 클래스, 같은 패키지		// x o
+		t1.protectedNum = 10;    // 자기 클래스, 같은 패키지, 상속	// x o
+		t1.publicNum = 10;        // 어디에서나					// o
 
 
 		// 다른 패키지(com.lec.java.access02) 에 있는 클래스
@@ -40,7 +39,7 @@ public class Access01Main {
 //		t2.privateNum = 10;		// 자기 클래스					// x
 //		t2.defaultNum = 10;		// 자기 클래스, 같은 패키지		// x
 //		t2.protectedNum = 10;	// 자기 클래스, 같은 패키지, 상속	// x
-		t2.publicNum = 10;		// 어디에서나					// o
+		t2.publicNum = 10;        // 어디에서나					// o
 
 
 	} // end main()

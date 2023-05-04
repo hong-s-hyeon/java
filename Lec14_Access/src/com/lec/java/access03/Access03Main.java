@@ -25,6 +25,8 @@ public class Access03Main {
 		TestDefault t2 = new TestDefault();
 
 		// 다른 패키지에 있는 public 클래스
+		//	---------패키지명---------.--클래스명-- 까지 입력
+		// import com.lec.java.access.TestPublic2;
 		TestPublic2 t3 = new TestPublic2();
 
 		// 다른패키지의 (default) 클래스는 import 할수 없다.
@@ -32,6 +34,7 @@ public class Access03Main {
 
 		TestPublic t11; // >> 얘는 access03에 있는 것
 		// 다른 패키지에 있는데, 같은 이름의 클래스가 있다면?
+		// 패키지까지 쭉 써줘야 한다.
 		com.lec.java.access04.TestPublic t12 = new com.lec.java.access04.TestPublic();
 
 
