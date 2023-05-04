@@ -33,7 +33,6 @@ public class File09Main {
 				ObjectOutputStream oout =
 						new ObjectOutputStream(out);
 				InputStream in = new FileInputStream(FILEPATH);
-
 				ObjectInputStream oin =
 						new ObjectInputStream(in);
 		){
@@ -49,7 +48,8 @@ public class File09Main {
 			list.add(m2);
 			list.add(m3);
 
-			oout.writeObject(list);  // list 를 한번에 저장
+			oout.writeObject(list);  	// list 를 한번에 저장
+										// 여기에는 ArrayList가 담겨 있는거네
 
 			list = null;
 			list = (ArrayList<Member>)oin.readObject();

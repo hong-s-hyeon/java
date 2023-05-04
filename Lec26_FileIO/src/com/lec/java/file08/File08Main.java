@@ -23,59 +23,59 @@ java.lang.Object
  transient 키워드를 사용
 */
 public class File08Main {
-	
-	public static final String FILEPATH  = "temp/member.dat";
 
-	public static void main(String[] args) {
-		System.out.println("Object Filter Stream");
-		
-		try(
-			OutputStream out = new FileOutputStream(FILEPATH);
-			ObjectOutputStream oout = new ObjectOutputStream(out);
-			InputStream in = new FileInputStream(FILEPATH);
-			ObjectInputStream oin = new ObjectInputStream(in);
-				){
-			// 파일에 쓸 데이터 객체 생성
-			Member m1 = new Member("root", "root1234");
-			Member m2 = new Member("guest", "guest");
-			Member m3 = new Member("admin", "admin123456");
+    public static final String FILEPATH = "temp/member.dat";
 
-			oout.writeObject(m1);
-			oout.writeObject(m2);
-			oout.writeObject(m3);
+    public static void main(String[] args) {
+        System.out.println("Object Filter Stream");
 
-			// 파일로부터 Objecty 읽어오기
-			Member dataRead;
+        try (
+                OutputStream out = new FileOutputStream(FILEPATH);
+                ObjectOutputStream oout = new ObjectOutputStream(out);
+                InputStream in = new FileInputStream(FILEPATH);
+                ObjectInputStream oin = new ObjectInputStream(in);
 
-			// 방법1: 매번 readObject() 호출
-//			dataRead = (Member)oin.readObject();
-//			dataRead.displayInfo();
-//			dataRead = (Member)oin.readObject();
-//			dataRead.displayInfo();
-//			dataRead = (Member)oin.readObject();
-//			dataRead.displayInfo();
+        ) {
+            // 파일에 쓸 데이터 객체 생성
+            Member m1 = new Member("root", "root1234");
+            Member m2 = new Member("guest", "guest");
+            Member m3 = new Member("admin", "admin123456");
 
-			// 방법2 : 무한루프로 readObject() 호출하고  EOFException 으로 잡기.
-			// EOFException 으로 끝까지 read한것을 체크
-			// EOF : End Of File
-			while (true) {
-				dataRead = (Member)oin.readObject();
-				dataRead.displayInfo();
-			} // end while
+            oout.writeObject(m1);
+            oout.writeObject(m2);
+            oout.writeObject(m3);
+            // 방법1: 매번 readObject() 호출
+            Member dataRead;
+//            dataRead = (Member)oin.readObject(); //  Object 리턴이므로 downcasting 필요
+//            dataRead.displayInfo();
+//            dataRead = (Member)oin.readObject();
+//            dataRead.displayInfo();
+//            dataRead = (Member)oin.readObject();
+//            dataRead.displayInfo();
 
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		} catch (EOFException e) {  // EOFException 는 IOException을 상속받았다.
-			System.out.println("파일 끝까지 읽었습니다");
-		}catch (IOException e) {
-			throw new RuntimeException(e);
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(e);
-		}
+            // 방법2 : 무한루프로 readObject() 호출하고  EOFException 으로 잡기.
+            // EOFException 으로 끝까지 read한것을 체크
+            // EOF : End Of File
+            while(true){
+                dataRead = (Member)oin.readObject();
+                dataRead.displayInfo();
+            }
 
-		System.out.println("\n프로그램 종료");
-		
-	} // end main()
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (EOFException e) {  // EOFException 는 IOException을 상속받았다.
+                                    // 그래서 IOException 위에 있어야 한다.
+            System.out.println("파일을 끝까지 읽었습니다");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("\n프로그램 종료");
+
+    } // end main()
 
 } // end class
 

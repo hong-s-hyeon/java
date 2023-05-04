@@ -37,10 +37,10 @@ package com.lec.java.file13;
 import java.io.*;
 
 public class File13Main {
-	
+
 	private static final String FILE1 = "temp/PrintData.txt";
 	private static final String FILE2 = "temp/PrintData_euckr.txt";
-	
+
 	public static void main(String[] args) {
 		System.out.println("PrintWriter / 인코딩 ");
 
@@ -50,7 +50,7 @@ public class File13Main {
 		BufferedReader br = null;
 		BufferedWriter bw = null;
 
-		PrintWriter out = null;
+		PrintWriter out  = null;
 
 		try{
 //			fw = new FileWriter(FILE1);
@@ -64,47 +64,33 @@ public class File13Main {
 			//out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(FILE2))));
 			test_write(out);
 
-			System.out.println();
-
-			br = new BufferedReader(new FileReader(FILE1));
-
-			//br = new BufferedReader(new InputStreamReader(new FileInputStream(FILE1)));
-			//br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(FILE1))));
-
-			test_read(br);
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		} finally {
 			out.close();
+		}
 
-			try {
-				if(br != null) br.close();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
+
+			System.out.println("\n프로그램 종료");
+
+		} // end main()
+
+		private static void test_read(BufferedReader br) throws IOException {
+			String line;
+			StringBuffer sb = new StringBuffer();
+			while((line = br.readLine()) != null){
+				sb.append(line + "\n");
 			}
+			System.out.println(sb);
 		}
 
-
-		System.out.println("\n프로그램 종료");
-		
-	} // end main()
-
-	private static void test_read(BufferedReader br) throws IOException {
-		String line;
-		StringBuffer sb = new StringBuffer();
-		while((line = br.readLine()) != null){
-			sb.append(line + "\n");
+		public static void test_write(PrintWriter out) {
+			out.println("안녕하세요 Java 한글이 잘 보이나요?");
+			out.print((2000 + 20) + " " + 3.14);
+			out.println();
+			out.printf("%d-%d-%d\n", 2020, 3, 2);
+			out.flush();  // 까먹으면 안된다!!
 		}
-		System.out.println(sb);
-	}
 
-	public static void test_write(PrintWriter out) {
-		out.println("안녕하세요 Java 한글이 잘 보이나요?");
-		out.print((2000 + 20) + " " + 3.14);
-		out.println();
-		out.printf("%d-%d-%d\n", 2020, 3, 2);
-		out.flush();  // 까먹으면 안된다!!
-	}
-	
 } // end class

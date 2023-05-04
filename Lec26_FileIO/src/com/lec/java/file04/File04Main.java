@@ -35,26 +35,28 @@ public class File04Main {
 
 		try {
 			in = new FileInputStream("temp/big_text.txt");
-			bin = new BufferedInputStream(in);  // 장착!
+			bin = new BufferedInputStream(in);		// 장착
 			out = new FileOutputStream("temp/copy_big_text.txt");
-			bout = new BufferedOutputStream(out);  // 장착!
+			bout = new BufferedOutputStream(out);	// 장착
 
 			int dataRead;
 			int bytesCopied = 0;
-			long startTime = System.currentTimeMillis();   // 현재 시간 저장
+			long startTime = System.currentTimeMillis();    // static 메소드네
 
-			while(true){
+
+			while (true) {
+
 				dataRead = bin.read();
-				if(dataRead == -1){   // 더이상 읽을 것이 없으면 read() 는 -1 을 리턴한다.
+
+				if (dataRead == -1) {
 					break;
 				}
-
 				bout.write(dataRead);
 				bytesCopied++;
 			} // end while
 
-			long endTime = System.currentTimeMillis();   // 끝난 시간 저장
-			long elapsedTime = endTime - startTime;    // 경과시간.
+			long endTime = System.currentTimeMillis();
+			long elapsedTime = endTime - startTime;
 
 			System.out.println("읽고 쓴 바이트: " + bytesCopied);
 			System.out.println("경과 시간(ms): " + elapsedTime);
@@ -64,17 +66,16 @@ public class File04Main {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		} finally {
-			// 리소스 해제.
 			try {
-				if(bout != null) bout.close();
-				if(bin != null) bin.close();  // bin을 close하면, bin을 만든 in도 함께 close됨
+				if (bout != null) bout.close();// bin을 close하면, bin을 만든 in도 함께 close됨
+				if (bin != null) bin.close();
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
 		}
 
 		System.out.println("\n프로그램 종료");
-		
+
 	} // end main()
 
 } // end class

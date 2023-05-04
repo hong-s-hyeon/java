@@ -15,7 +15,7 @@ public class Member implements Serializable {
 	// 해당 타입의 기본값(0, false, null)으로 초기화됨
 	
 	public Member() {}
-	public Member(String id, String pw) {
+	public Member(String id, String  pw) {
 		this.id = id;
 		this.pw = pw;
 		this.num = 123;

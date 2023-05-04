@@ -27,6 +27,7 @@
       <module fileurl="file://$PROJECT_DIR$/Lec23_InnerClass/Lec23_InnerClass.iml" filepath="$PROJECT_DIR$/Lec23_InnerClass/Lec23_InnerClass.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lec24_Lambda/Lec24_Lambda.iml" filepath="$PROJECT_DIR$/Lec24_Lambda/Lec24_Lambda.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lec25_Thread/Lec25_Thread.iml" filepath="$PROJECT_DIR$/Lec25_Thread/Lec25_Thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lec26_FileIO/Lec26_FileIO.iml" filepath="$PROJECT_DIR$/Lec26_FileIO/Lec26_FileIO.iml" />
     </modules>
   </component>
 </project>

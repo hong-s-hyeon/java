@@ -10,114 +10,110 @@ import java.io.PrintWriter;
 
 /*
  * 버퍼사용 문자입출력 : BufferedReader, BufferedWriter
- * 
+ *
  * java.lang.Object
  *  └─ java.io.Reader
  *      └─ java.io.BufferedReader
- *       
+ *
  * java.lang.Object
  *  └─ java.io.Writer
  *      └─ java.io.BufferedWriter
- *      
- * ★ 문자기반 출력시 꼭 끝에 flush() 해주자 ★     
- *             
+ *
+ * ★ 문자기반 출력시 꼭 끝에 flush() 해주자 ★
+ *
 */
 
 /*
  * txt 는 utf-8 로 인코딩 , 영문 텍스트
  */
 public class File12Main {
-	
-	private static final String BIG_TEXT = "temp/big_eng.txt"; 
-	
-	public static void main(String[] args) {
-		System.out.println("FileReader / FileWriter");
-		
-		FileWriter fw = null;
-		FileReader fr = null;
 
-		BufferedReader br = null;
-		BufferedWriter bw = null;
+    private static final String BIG_TEXT = "temp/big_eng.txt";
 
-		int charRead = 0;
-		int charsCopied = 0;
-		long startTime, endTime, elapsedTime;
+    public static void main(String[] args) {
+        System.out.println("FileReader / FileWriter");
 
-		try{
-			System.out.println("FileReader/Writer 만 사용");
-			fr = new FileReader(BIG_TEXT);
-			fw = new FileWriter("temp/big_eng_copy1.txt");
+        FileWriter fw = null;
+        FileReader fr = null;
 
+        BufferedReader br = null;
+        BufferedWriter bw = null;
 
-			charRead = 0;  // 읽은 문자 (한개)
-			charsCopied = 0;
-			startTime = System.currentTimeMillis(); // 현재 시간 저장
-			
-			while((charRead = fr.read()) != -1){   // read() '한글자' 읽어서 int 타입으로 리턴
-				fw.write(charRead);
-				charsCopied++;
-			}
-			fw.flush();
+        int charRead = 0; // 읽은 문자 (한개)
+        int charsCopied = 0;
 
-			endTime = System.currentTimeMillis(); // 끝난 시간 저장
-			elapsedTime = endTime - startTime; // 경과 시간
+        long startTime, endTime, elapsedTime;
 
-			System.out.println("읽고 쓴 문자수: " + charsCopied);
-			System.out.println("경과 시간(ms): " + elapsedTime);
+        try{
+            System.out.println("FileReader/Writer 만 사용");
+            fr = new FileReader(BIG_TEXT);
+            fw = new FileWriter("temp/big_eng_copy1.txt");
 
-			fw.close();
-			fr.close();
+            charRead = 0;  // 읽은 문자 (한개)
+            charsCopied = 0;
+            startTime = System.currentTimeMillis(); // 현재 시간 저장
 
-			//-------------------------------------------------------------
-			System.out.println();
-			System.out.println("BufferedReader/Writer + 버퍼 사용");
+            while((charRead = fr.read()) != -1){   // read() '한글자' 읽어서 int 타입으로 리턴
+                fw.write(charRead);
+                charsCopied++;
+            }
+            fw.flush();
 
-			fr = new FileReader(BIG_TEXT);
-			fw = new FileWriter("temp/big_eng_copy2.txt");
-			br = new BufferedReader(fr);  // 장착!
-			bw = new BufferedWriter(fw);  // 장착!
+            endTime = System.currentTimeMillis(); // 끝난 시간 저장
+            elapsedTime = endTime - startTime; // 경과 시간
 
-			char [] buf = new char[1024];  // 버퍼 제공
+            System.out.println("읽고 쓴 문자수: " + charsCopied);
+            System.out.println("경과 시간(ms): " + elapsedTime);
 
-			int charsRead = 0;  // 버퍼에 읽어들인 '문자'의 개수
-			charsCopied = 0;
-			startTime = System.currentTimeMillis();
-			while((charsRead = br.read(buf)) != -1){
-				bw.write(buf, 0, charsRead);
-				charsCopied += charsRead;
-			}
-			bw.flush();
+            fw.close();
+            fr.close();
+            //-------------------------------------------------------------
+            System.out.println();
+            System.out.println("BufferedReader/Writer + 버퍼 사용");
 
-			endTime = System.currentTimeMillis(); // 끝난 시간 저장
-			elapsedTime = endTime - startTime; // 경과 시간
+            fr = new FileReader(BIG_TEXT);
+            fw = new FileWriter("temp/big_eng_copy2.txt");
+            br = new BufferedReader(fr);    // 장착
+            bw = new BufferedWriter(fw);    // 장착
 
-			System.out.println("읽고 쓴 문자수: " + charsCopied);
-			System.out.println("경과 시간(ms): " + elapsedTime);
+            char[] buf = new char[1024];    // 버퍼제공
 
+            int charsRead = 0;              // 버퍼에 읽어들인 '문자'의 갯수
+            charsCopied = 0;
+            startTime = System.currentTimeMillis();
 
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException(e);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} finally {
+            while((charsRead = br.read(buf)) != -1){
+                bw.write(buf, 0, charsRead);
+                charsCopied += charsRead;
+            }
+            bw.flush(); //✨✨✨
 
-			try {
-//				if(fr != null) fr.close();
-//				if(fw != null) fw.close();
+            endTime = System.currentTimeMillis(); // 끝난 시간 저장
+            elapsedTime = endTime - startTime; // 경과 시간
 
-				if(br != null) br.close();
-				if(bw != null) bw.close();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
+            System.out.println("읽고 쓴 문자수: " + charsCopied);
+            System.out.println("경과 시간(ms): " + elapsedTime);
 
 
-		}
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+//                if(fr != null) fr.close();
+//                if(fw != null) fw.close();
 
+                if(br != null) br.close();
+                if(bw != null) bw.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
-		System.out.println("\n프로그램 종료");		
-		
-	} // end main()
+        System.out.println("\n프로그램 종료");
+
+    } // end main()
 } // end class
 
 
