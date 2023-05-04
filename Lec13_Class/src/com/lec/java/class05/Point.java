@@ -24,6 +24,7 @@ public class Point {
         this.yPos = yPos;
     }
 
+
     // 메소드
     // 멤버변수 xPos의 값을 전달받은 매개변수(x)의 값으로 변경하는 메소드
     // public void setXPos(double x)
@@ -52,10 +53,7 @@ public class Point {
     // Math.sqrt((x - pt.x) * (x - pt.x) + (y - pt.y) * (y - pt.y))
     // TODO
     public double distance(Point pt){
-        double x = this.xPos;
-        double y = this.yPos;
-
-        return Math.sqrt((x - pt.xPos) * (x - pt.xPos) + (y - pt.yPos) * (y - pt.yPos));
+        return Math.sqrt((xPos - pt.xPos) * (xPos - pt.xPos) + (yPos - pt.yPos) * (yPos - pt.yPos));
     }
 
     // 메소드 이름: add
@@ -68,6 +66,16 @@ public class Point {
         this.xPos += pt.xPos;
         this.yPos += pt.yPos;
         return this;
+    }
+
+    public Point add(double a, double b){
+        this.xPos += a;
+        this.yPos += b;
+        return this;
+    }
+
+    public String myPositon(){
+        return "(" + xPos + ", " + yPos + ")";
     }
 
 }

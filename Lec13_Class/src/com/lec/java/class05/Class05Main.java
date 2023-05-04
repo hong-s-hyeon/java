@@ -16,25 +16,19 @@ public class Class05Main {
 		System.out.println("클래스 정의 연습 : this, 메소드 체이닝");
 
 		// TODO
+		Point p0 = new Point(0, 0);
+		Point p1 = new Point(1, 0);
+		Point p2 = new Point(0, 4);
+		Point p3 = new Point(3, 4);
+		Point p4 = new Point(2, 0);
 
-		Point pt0 = new Point(0, 0);
-		Point pt1 = new Point(1, 1);
-		Point pt2 = new Point(1, 4);
-		Point pt3 = new Point(5, 1);
-		Point pt4 = new Point(4, 0);
+		System.out.println(p0.myPositon() +" 에서" + p3.myPositon()
+				+ "거리 : " + p0.distance(p3));
 
-
-		System.out.println("pt1 거리 : " + pt0.distance(pt1));
-		System.out.println("pt2 거리 : " + pt0.distance(pt2));
-		System.out.println("pt3 거리 : " + pt0.distance(pt3));
-		System.out.println("pt4 거리 : " + pt0.distance(pt4));
-
-
-		System.out.println();
-		System.out.println("pt1 <> pt2 거리 : " + pt1.distance(pt2));
-		if(pt1.add(pt4).distance(pt3) == pt3.distance(pt1)) System.out.println("정답");
-		else System.out.println("메소드 다시 만들어!");
-
+		// Method Chaining! + Overloading
+		double dis = p1.add(-1,0).add(1, 0).add(p4).add(p2).distance(p0);
+		boolean isTrue = (dis == p3.distance(p0))? true: false;
+		System.out.println(isTrue);
 
 		System.out.println("프로그램 종료");
 	} // end main()
