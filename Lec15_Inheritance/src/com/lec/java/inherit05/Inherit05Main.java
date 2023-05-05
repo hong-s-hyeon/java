@@ -8,12 +8,29 @@ package com.lec.java.inherit05;
  * public: 어디서나 직접 사용 가능
  */
 
+import com.lec.java.inherit06.Test02;
+import com.lec.java.inherit06.Test03;
+import com.lec.java.inherit06.test.Test04;
+
 public class Inherit05Main {
 
 	public static void main(String[] args) {
 		System.out.println("상속: 접근 권한(제어)");
-		
+
 		// TODO
+		Test01 t1 = new Test01();
+		Test02 t2 = new Test02();
+		Test03 t3 = new Test03();
+		Test04 t4 = new Test04();
+
+		t1.showInfo();
+		System.out.println();
+		t2.showInfo();
+		System.out.println();
+		t3.showInfo();
+		System.out.println();
+		t4.showInfo();
+
 
 		System.out.println("\n프로그램 종료");
 	} // end main()

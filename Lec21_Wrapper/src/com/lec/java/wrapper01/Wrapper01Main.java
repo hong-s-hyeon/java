@@ -28,6 +28,8 @@ public class Wrapper01Main {
         Integer num2 = Integer.valueOf(123);
         System.out.println("num2 = " + num2);
 
+        System.out.println();
+        System.out.println("reference Type(new Integer) vs Primitive Type(Integer.valueOf()");
         System.out.println("==");
         if (num1 == num2) System.out.println("==같다");
         else System.out.println("!=다르다");

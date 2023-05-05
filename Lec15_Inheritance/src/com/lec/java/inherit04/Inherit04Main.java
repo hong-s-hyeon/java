@@ -49,6 +49,7 @@ public class Inherit04Main {
 		System.out.println("oil : " + c3.oil);
 
 		System.out.println();
+		System.out.println("HybridCar");
 		// HybridCar 클래스 인스턴스 생성
 		HybridCar c4 = new HybridCar();
 

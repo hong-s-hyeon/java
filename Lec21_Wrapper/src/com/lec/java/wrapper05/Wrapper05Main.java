@@ -4,8 +4,10 @@ package com.lec.java.wrapper05;
  * 1. Object 타입이 모~든 (심지어 primitive) 타입도 받을수 있다.
  * 2. Collection 과 같은 Generic 클래스에선
  *     primitive 타입을 담을수 없다. 그러나 ,Wrapper 를 통해 가능하다.
- *     
- * 3. Wrapper 는 null 값 표현 가능
+ * 			ex> Map<int, int> (x)
+ * 				Map<Integer, Integer>  (o)
+ *
+ * 3. Wrapper 는 null 값 표현 가능✨✨✨ 왜? Object타입의 빈값은? >> null 이니까~~
  */
 public class Wrapper05Main {
 

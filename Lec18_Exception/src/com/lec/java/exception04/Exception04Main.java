@@ -1,6 +1,6 @@
 package com.lec.java.exception04;
 
-/*	예외 클래스의 상속 관계 (★필수 암기★)
+/*	예외 클래스의 상속 관계 (★필수 암기★)(족보)
 	java.lang.Object
 	|__ java.lang.Throwable
 	  |

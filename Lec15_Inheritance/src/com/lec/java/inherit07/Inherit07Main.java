@@ -25,6 +25,7 @@ public class Inherit07Main {
 
 		System.out.println();
 		// BusinessPerson 클래스의 인스턴스를 생성
+		System.out.println("BusinessPerson 클래스의 인스턴스를 생성");
 		BusinessPerson p2 = new BusinessPerson();
 		p2.setName("성춘향");
 		p2.setCompany("(주)조선");

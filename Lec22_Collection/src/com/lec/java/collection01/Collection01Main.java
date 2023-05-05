@@ -1,7 +1,7 @@
 package com.lec.java.collection01;
 
 /* ArrayList<E>
-     ※계층도 숙지 중요
+     ※계층도 숙지 중요(족보)
 
      Collection<E>
       |__ List<E>

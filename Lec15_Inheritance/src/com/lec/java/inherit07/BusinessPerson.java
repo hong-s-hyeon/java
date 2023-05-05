@@ -20,7 +20,7 @@ public class BusinessPerson extends Person{
     @Override
     protected void showInfo() {
 //    private void showInfo() {    // 권한 범위가 줄어드는 오버라이딩은 불가!
-        super.showInfo();   // 부모의 showInfo() 수행
+//        super.showInfo();   // 부모의 showInfo() 수행
         System.out.println("회사 : " + company);
     }
 

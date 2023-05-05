@@ -25,9 +25,13 @@ public class Static01Main {
 
 	static Scanner sc = new Scanner(System.in);
 
-	public static void test(){}
+	public static void test(){
+		System.out.println("static method");
+	}
 
-	public void test2(){}
+	public void test2(){
+		System.out.println("instance method");
+	}
 
 	public static void main(String[] args) {
 		System.out.println("인스턴스 변수/메소드 vs 클래스 변수/메소드");
@@ -43,7 +47,7 @@ public class Static01Main {
 		// 인스턴스가 생성된 후에 사용 가능하다는 것!!!!!! 위의 test2()
 		Static01Main tc = new Static01Main();
 		tc.test2();  // 얘는 ok
-
+		tc.test(); // 되긴하나 이렇게 사용 x
 //		test2(); // Non-static method 'test2()' cannot be referenced from a static context
 
 

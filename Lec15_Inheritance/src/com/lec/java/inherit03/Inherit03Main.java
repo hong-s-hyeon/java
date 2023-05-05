@@ -20,12 +20,14 @@ public class Inherit03Main {
 		p2.name = "허균";
 		p2.company = "(주)조선";
 		p2.showInfo();
+		System.out.println();
+		p2.whoAmI();
 
-		System.out.println(p2); // com.lec.java.inherit03.BusinessPerson@5fd0d5ae
-		System.out.println(p2.toString()); // com.lec.java.inherit03.BusinessPerson@5fd0d5ae
+		System.out.println();
+		System.out.println(p2);   // 이름 : 허균, 회사 : (주)조선 <toString() overriding>
+		System.out.println(p2.toString());
 		// toString() 은 Object의 메소드
 		// 내부적으론 sout(p2) >> sout(p2.toString()) 한것 이다
-
 
 
 		System.out.println("\n프로그램 종료");

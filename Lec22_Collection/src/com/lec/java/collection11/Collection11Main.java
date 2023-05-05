@@ -1,9 +1,6 @@
 package com.lec.java.collection11;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 /* Map<K, V>, HashMap<K, V>
      Collection<E>
       |__ List<E>, Set<E>
@@ -109,6 +106,10 @@ public class Collection11Main {
         System.out.println("HashMap 응용: 배열에서 발생빈도 구하기");
         int[] arr = {2, 4, 5, 3, 3, 4, 4, 4, 2, 2, 1, 1};
         printFreq(arr);
+        System.out.println();
+        System.out.println("hmap -> tmap");
+        TreeMap<Integer, Integer> tmap = new TreeMap<>(returnFreq(arr));
+        System.out.println(tmap);
 
 
         System.out.println("\n프로그램 종료");
@@ -135,6 +136,25 @@ public class Collection11Main {
             System.out.println(e.getKey()+ " : " + e.getValue());
         }
 
+    }
+
+    static Map<Integer, Integer> returnFreq(int[] arr) {
+
+        // key : 등장 숫자
+        // value : 등장 횟수
+        Map<Integer, Integer> hmap = new HashMap<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            Integer v = hmap.get(arr[i]);    // wrapper class는 primitive와는 다르게 null을 담을 수 있다.
+
+            if (v == null) {        // 기존에 해당 key값이 없었다면 (즉, 첫 등장이라면)
+                hmap.put(arr[i], 1);    // 등장횟수 1
+            } else {                // 기존에 해당 key 값이 존재했다면 (즉, 이전에 1번 이상 등장했다면!)
+                hmap.put(arr[i], v + 1);    // 기존 등장횟수에 + 1 추가
+            }
+        }
+
+        return hmap;
     }
 
 } // end class

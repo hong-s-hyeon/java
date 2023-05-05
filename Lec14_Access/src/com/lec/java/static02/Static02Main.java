@@ -8,7 +8,6 @@ package com.lec.java.static02;
 
 
 public class Static02Main {
-
 	public static void main(String[] args) {
 		System.out.println("인스턴스 변수/메소드");
 

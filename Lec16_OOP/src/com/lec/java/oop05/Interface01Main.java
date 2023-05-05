@@ -31,9 +31,10 @@ public class Interface01Main {
 		// Reference to 'MIN' is ambiguous, both 'TestInterface.MIN' and 'TestInterface2.MIN' match
 
 		// static 은 static 방식으로 사용하자!
-		System.out.println(TestInterface.MIN);
+		System.out.println(TestInterface.MAX);
 		System.out.println(TestInterface2.MIN);
-
+//		TestInterface t11 = new TestInterface();
+// 			'TestInterface' is abstract; cannot be instantiated
 
 		System.out.println("\n 프로그램 종료");
 	} // end main()
