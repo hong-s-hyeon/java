@@ -122,7 +122,8 @@ public class Collection11Main {
         Map<Integer, Integer> hmap = new HashMap<>();
 
         for (int i = 0; i < arr.length; i++) {
-            Integer v = hmap.get(arr[i]);    // wrapper class는 primitive와는 다르게 null을 담을 수 있다.
+            Integer v = hmap.get(arr[i]);   // 정수값 또는 null을 리턴한다~
+                                            // wrapper class는 primitive와는 다르게 null을 담을 수 있다.
 
             if (v == null) {        // 기존에 해당 key값이 없었다면 (즉, 첫 등장이라면)
                 hmap.put(arr[i], 1);    // 등장횟수 1

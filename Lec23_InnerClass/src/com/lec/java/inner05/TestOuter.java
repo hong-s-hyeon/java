@@ -9,11 +9,10 @@ public class TestOuter {
 
 		int num2 = 200;   // 메소드의 지역변수
 
-
-
 		class TestLocal {    // Local inner class
 
 			private int num3 = 300;
+
 
 			public void showNumbers(){
 				// 외부 클래스의 맴버
@@ -28,7 +27,10 @@ public class TestOuter {
 			}
 		} //end inner
 
+		// 메소드안에서 정의된 class 이므로 인스턴스 생성부터 필요한것 호출까지 해주어야 한다.
 		TestLocal local = new TestLocal();
+		// 위의 TestLocal 타입의 local은 메소드가 끝나면 같이 사라짐
+
 		//num2 = 400;  // num2 값을 변경하면.. 아래 showNumbers()에선
 		// 200 이 찍혀야 하나? 400이 찍혀야 하나?
 		// 그래서 로컬내부클래스에서 사용 가능한 지역의 변수는

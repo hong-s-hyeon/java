@@ -24,7 +24,7 @@ public class TestOuter {
 		public void printValue(int value){  // 3.
 			System.out.println("value = " + value);  // 지역변수 3.
 			System.out.println("this.value = " + this.value); // 2.
-
+			//outer class의 맴버변수를 member inner class에서 사용하려면?
 			System.out.println("TestOuter.this.value = " + TestOuter.this.value); // 1. ???
 		}
 

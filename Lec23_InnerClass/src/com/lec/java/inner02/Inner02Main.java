@@ -15,6 +15,7 @@ package com.lec.java.inner02;
  	
  	is-a  : 상속관계
  	has-a (종속) : 멤버내부클래스
+ 					ex>  컴퓨터가 있어야 비로소 CPU가 필요해? 이러면 종속
  	has-a (독립) : 멤버변수
 
  	Map.EntrySet >> EntrySet도 Map이 있어야 비로소 필요하다
@@ -23,8 +24,13 @@ public class Inner02Main {
 
 	public static void main(String[] args) {
 		System.out.println("멤버 내부 클래스 활용");
-		
-		
+
+		Car car = new Car("red", 4);
+
+
+		car.getTire().displayInfo();
+
+
 	} // end main()
 
 } // end class Inner02Main

@@ -13,7 +13,7 @@ package com.lec.java.inner01;
 	복습
 	static은 인스턴스 없이 사용가능
 	method area에 올라온다
-	최초에 한번 만들어진다ㅊㅊ
+	최초에 한번 만들어진다
 */
 
 import java.util.Map;
@@ -39,7 +39,7 @@ public class Inner01Main {
 
 
 		// 하나의 외부 클래스 인스턴스를 이용해서
-		// 멤버 내부 클래스의 인스턴스는 여러개를 생성할 수 있다.
+		// 멤버 내부 클래스의 인스턴스는 ✨✨여러개✨✨를 생성할 수 있다.
 
 		TestOuter.TestInner in2 = out.new TestInner(122);
 		in2.printValue();

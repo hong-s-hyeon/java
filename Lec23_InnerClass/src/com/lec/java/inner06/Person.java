@@ -11,6 +11,7 @@ public class Person {
 
 	public void readAge(final int age){
 
+		// local inner class의 룰
 		//동일한 scope에 있으면 경우를 사용하려면, final or effective final 이어야한다
 //		age = 40;
 
@@ -55,6 +56,7 @@ public class Person {
 
 	 인터페이스(interface) + 다형성(polymorphism):
 
+		<step>
 	 1. 외부에서 사용하고 싶은 메소드를 선언한 인터페이스를 작성
 	 2. 메소드의 리턴타입은 정의한 인터페이스 타입으로 정의
 	 3. 로컬 클래스는 인터페이스를 구현(implements)하도록 정의
@@ -66,7 +68,7 @@ public class Person {
 
 		// local inner class
 		// 3. 로컬 클래스는 인터페이스를 구현(implements)하도록 정의
-		class PeronWithAge implements MyReadable{
+		class PeronWithAge implements MyReadable{	// ✨✨✨인터페이스
 
 			@Override
 			public void readInfo() {
@@ -76,7 +78,7 @@ public class Person {
 		} // local inner class
 
 		// 4. 로컬 클래스의 인스턴스를 생성하고 리턴해줌
-		MyReadable person = new PeronWithAge();
+		MyReadable person = new PeronWithAge();		// ✨✨✨다형성
 		return person;
 
 

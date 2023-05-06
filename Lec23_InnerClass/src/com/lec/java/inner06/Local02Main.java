@@ -11,7 +11,7 @@ public class Local02Main {
 		person.readAge(55);
 
 		MyReadable  r = person.createInstance(16);
-		r.readInfo();
+		r.readInfo();		// 외부 글래스에서도 local inner 클래스의 메소드 사용 가능
 
 	} // end main()
 

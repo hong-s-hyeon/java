@@ -28,8 +28,15 @@ public class Nested01Main {
 		// 중첩 클래스의 이름(타입): [외부클래스 이름].[내부클래스 이름]
 		// 중첩 클래스의 생성자: new [외부클래스 이름].생성자()
 
+
+		// member inner class는 new TestOuter(??).new TestInner(??) 이렇게 해주어야했다
 		TestOuter.TestNested nest1 = new TestOuter.TestNested();
 		nest1.printValue();
+
+		System.out.println();
+		TestOuter.TestNested.println();
+		System.out.println(TestOuter.count);
+		System.out.println();
 
 		TestOuter.TestNested nest2 = new TestOuter.TestNested();
 		TestOuter.count = 200;

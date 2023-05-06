@@ -3,7 +3,7 @@ package com.lec.java.inner05;
 /*
  Local Inner Class: 블록({ ... }) 내부에서 정의된 클래스
    1. 정의가 된 블록(메소드) 내부에서만 사용 가능 - 참조변수 선언, 인스턴스 생성
-   2. 접근 수식어(public, protected, private)는 쓸 수 없다.
+   2. 접근 수식어(public, protected, private)는 쓸 수 없다. >왜? 애초에 "local" inner class니까
    3. 외부 클래스의 멤버 변수(private 포함)는 모두 사용 가능
    4. effectively final인 지역변수나 매개변수만 사용 가능
  
