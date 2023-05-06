@@ -48,8 +48,8 @@ public class Anonymous01Main {
 
         int n = 12;
 //        n += 12;    // local inner class 에서는
-                    // final or effectively final 만 가능하다
-                    // 즉, 값을 변경하면 안된다는 의미
+        // final or effectively final 만 가능하다
+        // 즉, 값을 변경하면 안된다는 의미
         new MyReadable(){
             int a = 200;
 
@@ -115,7 +115,7 @@ public class Anonymous01Main {
 //인터페이스 뿐 아니라, 일반 클래스, 추상클래스 등도 가능하다.
 //상속 받은 (이름없는) 클래스의 인스턴스를 생성.
 //	- 멤버 변수/ 메소드 선언
-//	- 메소드 오버라이딩 
+//	- 메소드 오버라이딩
 
 abstract class MyAbstract {
 

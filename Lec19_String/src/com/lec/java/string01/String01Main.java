@@ -155,6 +155,12 @@ public class String01Main {
 		Scanner sc = new Scanner(System.in);
 
 		// TODO
+		System.out.print("아이디 입력: ");
+		String id = sc.nextLine();
+		System.out.print("비밀번호 입력: ");
+		String pw = sc.nextLine();
+		int a = sc.nextInt();
+		System.out.println(String.format("id: %s\npw: %s\n a: %d", id, pw, a));
 
 		sc.close();
 
