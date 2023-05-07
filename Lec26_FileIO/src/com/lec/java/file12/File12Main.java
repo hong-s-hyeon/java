@@ -110,7 +110,8 @@ public class File12Main {
                 throw new RuntimeException(e);
             }
         }
-
+        // Reader Writer 객체로 Buffered + buffer 해서도 해봣다.
+        // Reader Writer 객체에 자주 쓰는 객체를 보자 >>> file13
         System.out.println("\n프로그램 종료");
 
     } // end main()

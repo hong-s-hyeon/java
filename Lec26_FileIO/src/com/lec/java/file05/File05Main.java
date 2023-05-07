@@ -38,43 +38,40 @@ public class File05Main {
 						new FileInputStream("temp/big_text.txt");
 				BufferedInputStream bin = new BufferedInputStream(in);
 				// FileOutputStream 인스턴스 생성
-				OutputStream out =
+                OutputStream out=
 						new FileOutputStream("temp/copy_big_text.txt");
 				BufferedOutputStream bout = new BufferedOutputStream(out);
-		) {
 
-			byte[] buff = new byte[1024]; //버퍼준비
+        ){
+
+			byte[] buff = new byte[1024];
+
 
 			int lengthRead;
 			int bytesCopied = 0;
-			long startTime = System.currentTimeMillis();
+			long startTime = System.currentTimeMillis();   // 현재 시간 저장
 
-			// 파일 복사
-			while (true) {
-				// 데이터 읽기
+			while(true){
 				lengthRead = bin.read(buff);
-				if (lengthRead == -1) {
+				if(lengthRead == -1){
 					break;
 				}
-
 				// 데이터 쓰기
-				bout.write(buff, 0, lengthRead); // 바로 위에서 읽어들인 데이터만큼 write
-				bytesCopied += lengthRead;
+				bout.write(buff, 0, lengthRead);
+				bytesCopied+=lengthRead;
 			} // end while
 
-			long endTime = System.currentTimeMillis(); // 끝난 시간 저장
-			long elapsedTime = endTime - startTime;
+			long endTime = System.currentTimeMillis();
+			long elapsedTime = endTime - startTime;    // 경과시간.
 
 			System.out.println("읽고 쓴 바이트: " + bytesCopied);
 			System.out.println("경과 시간(ms): " + elapsedTime);
-
 
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-		// finally 에서 close 하지 않아도 자동으로 close() 된다.
 
 
 		System.out.println("\n프로그램 종료");

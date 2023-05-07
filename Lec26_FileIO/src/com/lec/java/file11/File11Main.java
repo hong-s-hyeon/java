@@ -29,7 +29,7 @@ import java.io.OutputStream;
  이진파일 (Binary File) 이란
    사람이 직접 읽을수는 없슴.
 
-   ★ 문자기반 출력시 꼭 끝에 flush() 해주자 ★
+   ★ 문자기반 출력시 꼭 끝에 flush() 해주자 ★✨✨✨
 */
 
 
@@ -42,32 +42,34 @@ public class File11Main {
 
 		try(
 				FileWriter fw = new FileWriter(dst);
-				FileReader fr = new FileReader(src);
-
+				FileReader fr = new FileReader(dst);
 		) {
-			String str = "안녕하세요";
-			char[] charArr = {'J', 'A', 'V', 'A'};
+
+			String str = "안녕하세요"; // 한글 3byte씩, 15byte
+			char[] charArr = {'J', 'A', 'V', 'A'}; // 1byte * 4 = 4byte
 			// 저장은 시스템 인코딩 상태에 따라 저장됨
 			// UTF-8의 경우 '안녕하세요' 한글 글자는 3byte.  5글자는 15byte로 저장됨.
 			//  영어 알파벳은 한글자당 1byte
+
 
 			fw.write(str);
 			fw.write(charArr);
 			fw.flush();
 			// write()로 출력 마무리 한후에는 flush() 메소드로 출력버퍼의 데이터를 완전히 출력.
-			long startTime = System.currentTimeMillis();
-			char[] buff = new char[100];    // 읽어들일 버퍼 준비
-			int charsRead = 0;                // 읽어들인 '문자'의 개수
-			charsRead = fr.read(buff);        // 더이상 읽어들일 문자데이터가 없으면 -1 리턴
 
-			for (int i = 0; i < charsRead; i++) {
+
+			char[] buff = new char[100];    // 읽어들일 버퍼 준비
+			int charsRead = 0;    // 읽어들인 '문자'의 갯수
+
+			charsRead = fr.read(buff); // 딩상 읽어들일 문자데이터가 없으면 -1리턴
+			for (int i = 0; i < buff.length; i++) {
 				System.out.print(buff[i]);
 			}
-			long endTime = System.currentTimeMillis();
-
 			System.out.println();
-			System.out.println("읽은 문자갯수: " + charsRead);
-			System.out.println("걸린 시간: "+ (endTime - startTime));
+			System.out.println("읽은 문자의 갯수: " + charsRead);
+
+			// byte 단위로도 출력 했고, 택스트를 한글자씩 읽는것도 햇고~여기서는 buffered Reader있나?
+			// >>> file12
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);

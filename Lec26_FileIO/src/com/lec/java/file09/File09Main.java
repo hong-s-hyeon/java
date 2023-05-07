@@ -22,7 +22,7 @@ import java.util.List;
 // read/write 가능.
 
 public class File09Main {
-	
+
 	public static final String FILEPATH  = "temp/member2.dat";
 
 	public static void main(String[] args) {
@@ -48,12 +48,12 @@ public class File09Main {
 			list.add(m2);
 			list.add(m3);
 
-			oout.writeObject(list);  	// list 를 한번에 저장
-										// 여기에는 ArrayList가 담겨 있는거네
+			oout.writeObject(list); // 리스트 객체를 저장!
 
 			list = null;
 			list = (ArrayList<Member>)oin.readObject();
-			for(Member m : list){
+
+			for(Member m:list){
 				m.displayInfo();
 			}
 
@@ -68,11 +68,8 @@ public class File09Main {
 		}
 
 
-
-
-
 		System.out.println("\n프로그램 종료");
-		
+
 	} // end main()
 
 } // end class File08Main

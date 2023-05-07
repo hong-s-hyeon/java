@@ -1,4 +1,4 @@
-package com.lec.java.file05.file06;
+package com.lec.java.file06;
 
 /*  Data Filter Stream
  Program <=== DataInputStream <=== FileInputStream <=== File
@@ -22,28 +22,28 @@ public class File06Main {
     public static void main(String[] args) {
         System.out.println("Data Filter Stream");
 
-        try (
+        try(
                 OutputStream out = new FileOutputStream("temp/data.bin");
                 DataOutputStream dout = new DataOutputStream(out);
                 InputStream in = new FileInputStream("temp/data.bin");
                 DataInputStream din = new DataInputStream(in);
-        ) {
-            dout.writeBoolean(true);    // 1byte
-            dout.writeInt(100);         // 4byte
-            dout.writeDouble(3.14);     // 8byte
-            dout.writeChar('A');        // 2byte
+
+                ){
+            dout.writeBoolean(true); // 1byte
+            dout.writeInt(100); // 4byte
+            dout.writeDouble(3.14); // 8byte
+            dout.writeChar('A');    // 2byte
+            // 총 15byte!!!
 
             boolean b = din.readBoolean();
             System.out.println("boolean: " + b);
-
             int num1 = din.readInt();
             System.out.println("int: " + num1);
-
-            double d1 = din.readDouble();
-            System.out.println("double: " + d1);
-
+            double num2 = din.readDouble();
+            System.out.println("double: " + num2);
             char ch = din.readChar();
             System.out.println("char: " + ch);
+            // object 저장은?? >>>> file08
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
