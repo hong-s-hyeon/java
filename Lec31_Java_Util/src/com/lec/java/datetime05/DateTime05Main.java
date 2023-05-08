@@ -18,29 +18,26 @@ public class DateTime05Main {
 		Timestamp t;
 
 		System.out.println("Timestamp(0)");
-		t = new Timestamp(1000L);   // 1970.01.01 00:00:00
+		t = new Timestamp(1000L);    // 1970.01.01 00:00:00
 		System.out.println(t);
-
 		System.out.println("Timestamp(현재ms)");
 		System.out.println(System.currentTimeMillis());
 		t = new Timestamp(System.currentTimeMillis());
 		System.out.println(t);
-		
-		
+
+		System.out.println();
 		//----------------------------------------------
 		// 문자열 -> Timestamp
 		// 	방법1 : 정해진 형식 + Timestamp.valueOf()
 		System.out.println("String -> Timestamp");
 		String now = "2009-03-20 10:20:30.0";
-		System.out.printf("Timestamp(%s)\n", now);
+		System.out.println("Timestamp(%s)\n" + now);
 		t = Timestamp.valueOf(now);
 		System.out.println(t);
-		
-		
+
+		System.out.println();
 		// 	방법2 : String -> Date -> Timestamp
 
-
-		
 		//----------------------------------------------
 		// Timestamp -> 문자열
 		// SimpleDateFormat + Timestamp:getTime()
@@ -48,15 +45,13 @@ public class DateTime05Main {
 		String str = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS").format(t.getTime());
 		System.out.println(str);
 
+
 		// Timestamp -> LocalDateTime
-		LocalDateTime datetime = t.toLocalDateTime();
-		System.out.println(datetime);
+		System.out.println(t.toLocalDateTime());
 
 		// LocalDateTime -> Timestamp
-		t = Timestamp.valueOf(datetime);
+		t = Timestamp.valueOf(t.toLocalDateTime());
 		System.out.println(t);
-		;
-		
 	}
 
 }

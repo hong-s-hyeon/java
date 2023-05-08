@@ -39,41 +39,43 @@ public class DateTime04Main {
 
 	public static void main(String[] args) {
 		System.out.println("-- java.time --");
-		
+
 		System.out.println("\nLocalDate");
 		// now() 현재 날짜
 		LocalDate date1 = LocalDate.now();
 		System.out.println("현재날짜: " + date1);
-		
+
 		// of(year, month, dayOfMonth) 주어진 날짜
 		LocalDate date2 = LocalDate.of(1999, 4, 20);
 		System.out.println("주어진날짜: " + date2);
-		
+
 		System.out.println("\nLocalTime");
-		LocalTime time1 = LocalTime.now();  // 현재 시간
-		System.out.println("현재시간: " + time1);
-		
+		LocalTime time1 = LocalTime.now();
+		System.out.println("현재 시간: " + time1);
+
 		// of(hour, minute, second, nanoOfSecond) 주어진 시간
 		LocalTime time2 = LocalTime.of(22, 12, 22, 1234567);
-		System.out.println("주어진시간: " + time2);
-		
-		System.out.println("\nLocalDateTime");
+		System.out.println("주어진 시간: "+ time2);
+
+		System.out.println("\nLocalDatTime");
 		LocalDateTime datetime1 = LocalDateTime.now();
 		System.out.println("현재날짜시간: " + datetime1);
 
-		// LocalDateTime -> String
+		// LocalDateTime -> String 하는 법
 		System.out.println("\nDateTimeFormatter 사용");
 		// java.time.DateTimeFormatter 를 사용하여 원하는 포맷으로 출력
-		System.out.println("현재 날짜 시간: " + datetime1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-		System.out.println("현재 날짜 시간: " + datetime1.format(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분ss초")));
+//		DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		datetime1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		System.out.println("현재날짜시간 : " + datetime1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		System.out.println("현재날짜시간 : " + datetime1.format(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분ss초")));
 
-		// String -> LocalDateTime
+		// String -> LocalDateTime 하는 법
 		String myDate = "2014-04-02";
 		LocalDate date3 = LocalDate.parse(myDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		System.out.println("date3: " + date3);
 
-		
-		
+		// datetime05 >> timestamp!
+
 		System.out.println("\n프로그램 종료");
 	} // end main()
 

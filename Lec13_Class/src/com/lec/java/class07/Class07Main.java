@@ -31,20 +31,19 @@ package com.lec.java.class07;
 public class Class07Main {
     public static void main(String[] args) {
         Model m1 = new Model();
-        System.out.println(m1);  // toString() 값
-//        m1.setOld(10);
+        System.out.println(m1);     // toString() 값
+        m1.setOld(10);
 
-//        Model m2 = new Model("타이틀", 23, true, 'M', (short)173);
-//        System.out.println(m2);
+        Model m2 = new Model("타이틀", 23, true,'M', (short) 173);
+        System.out.println(m2);
 
-//        Model m3 = Model.builder()
-//                .title("안녕하세요")
-//                .old(94)
-//                .gender('F')
-//                .build()
-//                ;
+        Model m3 = Model.builder()
+                .title("안녕하세요")
+                .old(94)
+                .gender('F')
+                .build();
 
-//        System.out.println(m3);
+        System.out.println(m3);
 
     }
 }

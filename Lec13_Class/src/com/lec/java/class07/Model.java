@@ -1,6 +1,7 @@
 package com.lec.java.class07;
 
-//import lombok.*;
+
+import lombok.*;
 
 /**
  * Lombok 의 주요 어노테이션 (annotation 들)
@@ -20,25 +21,23 @@ package com.lec.java.class07;
  * @NonNull → 필드나 변수선언시 앞에 사용.  Null 이 되면 예외를 발생시켜준다.
  */
 
+//@Getter     // getter를 알아서 만들어줌
+//@Setter     // Setter를 알아서 만들어줌
+//@ToString   // toString() 알아서 만들어줌 >> Model(title=null, age=0, isAdult=false, gender= , size=0)
+@Data //getter, setter, toString, equals, hashCode 를 알아서 만들어줌
+@AllArgsConstructor     // 매개변수 갖는 생성자를 알아서 만들어줌
+@NoArgsConstructor(force = true)      // 기본 생성자를 알아서 만들어줌
+@RequiredArgsConstructor    // @NonNull이 붙은 필드의 생성자를 알아서 만들어줌
 
-//@Getter  // getter
-//@Setter  // setter
-//@ToString // toString()
-//@Data   // getter, setter, toString, equals, hashCode
-//@AllArgsConstructor  // 매개변수 갖는 생성자
-//@NoArgsConstructor  // 기본생성자
-//@RequiredArgsConstructor  // @NonNull 이 붙은 필드의 생성자
-//
-//@Builder    // builder pattern
-//// 제공
+@Builder    // builder pattern 제공
 public class Model {
-//    @NonNull
-//    private String title;
-//    @NonNull
-//    private int old;
-//    private boolean isAdult;
-//    private char gender;
-//    private short size;
+    @NonNull
+    private String title;
+    @NonNull
+    private int old;
+    private boolean isAdult;
+    private char gender;
+    private short size;
 
 } // end Model
 
