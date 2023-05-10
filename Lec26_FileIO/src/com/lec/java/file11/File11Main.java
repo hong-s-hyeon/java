@@ -58,7 +58,7 @@ public class File11Main {
 			// write()로 출력 마무리 한후에는 flush() 메소드로 출력버퍼의 데이터를 완전히 출력.
 
 
-			char[] buff = new char[100];    // 읽어들일 버퍼 준비
+			char[] buff = new char[20];    // 읽어들일 버퍼 준비
 			int charsRead = 0;    // 읽어들인 '문자'의 갯수
 
 			charsRead = fr.read(buff); // 딩상 읽어들일 문자데이터가 없으면 -1리턴
