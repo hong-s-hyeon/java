@@ -13,5 +13,6 @@ public class Stream05Main {
 class DefaultRunnder{
 	public void run(String...args) {
 		// TODO
+		System.out.println(args[0]);
 	}
 }

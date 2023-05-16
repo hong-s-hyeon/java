@@ -5,6 +5,8 @@ import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
 
+import static java.util.Optional.of;
+
 /* Optional<T>
  * 	자바의 고질적인 null 체크 피하기 위한 객체
  * 	Java8 에서 등장
@@ -29,40 +31,48 @@ public class Optional02Main {
 	public static void main(String[] args) {
 		System.out.println("Optional<T> 생성");
 		String str = "hello";
-		
-		Optional<String> o1, o2, o3;
-		
+
+		Optional<String> o1, o2, o3;    // String 타입을 담을 수 있는 그릇.
+
 		// 1. Optional.of(value) 를 사용하여 생성
 		o1 = Optional.of(str);
+		// Optional.of > static 메소드에 String타입 매개변수 => 그릇에 담는다
+
 		System.out.println(o1);
-		System.out.println(o1.get());  // Optional 내부객체 리턴
-
+		System.out.println(o1.get());    // Optional 내부 객체리턴
 //		Optional.of(null); // value 가 null 이면 NPE
-
+		System.out.println();
 
 		// 2. Optional.ofNullable(value)
 		// value 가 null이면 empty Optional 객체 반환
-		o2 = Optional.ofNullable(str);
+		o2 = Optional.ofNullable((str));
 		System.out.println(o2);
+		o2 = Optional.ofNullable(null);        // null을 담고 있는 Optional 객체
+		System.out.println(o2);  // Optional.empty
 
-		o2 = Optional.ofNullable(null);
-		System.out.println(o2);
-		
+
+//		System.out.println(o2.get());  // NoSuchElementException
+		System.out.println();
+
 		// 3.Optional.empty()  empty Optional 객체 반환
 		o3 = Optional.empty();
-		System.out.println(o3);
+		System.out.println(o3);    // Optional.empty
+		System.out.println();
 
 		// OptionalInt, OptionalDouble, OptionalLong
-		Optional<Integer> optInteger = Optional.of(10);    // auto-boxing 발생
-		OptionalInt optInt = OptionalInt.of(10);           // auto-boxing 발생 안함
+		System.out.println("OptionalInt, OptionalDouble, OptionalLong");
+		Optional<Integer> optInteger = Optional.of(10);    // auto-boxing
+		OptionalInt optInt = OptionalInt.of(10);            // auto-boxing 안해도됨. 인트를 담도록 만들엇자나
 		OptionalLong optLong = OptionalLong.of(1234L);
-		OptionalDouble optionalDouble = OptionalDouble.of(3.14);
+		OptionalDouble optDouble = OptionalDouble.of(3.14);
 
-		System.out.println(optInteger.get());   // auto-unboxing 발생
-		System.out.println(optInt.getAsInt());  // auto-unboxing 발생 안함
+		// int, double long만 제공한 이유? >> 적절하게 형변환 해서 담으라고~✨✨
 
-		System.out.println(optionalDouble.getAsDouble());
+		System.out.println(optInteger.get());       // auto-unboxing 발생
+		System.out.println(optInt.getAsInt());        // auto-unboxing 발생 안함 >> 성능적으로 더 좋다
+		System.out.println(optDouble.getAsDouble());
 		System.out.println(optLong.getAsLong());
+
 
 		System.out.println("\n프로그램 종료");
 	} // end main()

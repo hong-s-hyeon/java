@@ -1,6 +1,7 @@
 package com.lec.stream06;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /* 스트림 연습] 스트림을 활용하여 패키지 여행 비용 계산하기
@@ -38,35 +39,32 @@ public class Stream06Main {
         customerList.add(customerHong);
 
         System.out.println("== 고객 '이름'을 추가된 순서대로 출력 ==");
-        customerList.stream().forEach(s-> System.out.print(s.getName() + " "));
+        // TODO
+        customerList.stream().map(c -> c.getName()).forEach(name -> System.out.print(name + " "));
         System.out.println();
-        customerList.stream().map(c -> c.getName()).forEach(s -> System.out.println(s));
 
         // 총 여행비용
-        {  // 박시론
-            int sum = customerList.stream().map(x -> x.getPrice()).reduce((a,b) -> a +b).get();
-            System.out.println(sum);
-        }
-        {  // 홍윤표
-            int travelSum = customerList.stream()
-                    .map(c-> c.getPrice())
-                    .reduce(0,(a,b) ->  a + b);
-            System.out.println(travelSum);
-        }
-
-
-        {   // 김우재
-            System.out.println(customerList.stream().mapToInt(c -> c.getPrice()).reduce((a, b) -> a + b).orElse(0));
-        }
+        // TODO
+        int result = customerList.stream().mapToInt(c -> c.getPrice()).sum();
+        int result2 = customerList.stream().map(c -> c.getPrice()).reduce(0, (a, b) -> a + b);
+        System.out.println(result);
+        System.out.println(result2);
 
         System.out.println("== 20세 이상 고객 '이름'을 정렬하여 출력 ==");
-        { // 박시론
-            customerList.stream().filter(x -> x.getAge() >= 20).map(x -> x.getName()).sorted().forEach(x -> System.out.println(x));
-        }
-        { // 홍윤표
-            customerList.stream().filter(s-> s.getAge() >= 20).map(s-> s.getName()).sorted().forEach(s -> System.out.print(s + " "));
-        }
+        // TODO
+        customerList.stream()
+                .filter(c -> c.getAge() >= 20)
+                .map(c -> c.getName())
+                .sorted()
+                .forEach(c -> System.out.print(c + " "));
+        System.out.println();
 
-
+        System.out.println("=='이름'을 새로운 리스트로 만들기 ==");
+        String[] arr = customerList.stream()
+//                .filter(c -> c.getAge() >= 20)
+                .map(c -> c.getName())
+                .reduce((a, b) -> a + "," + b).get().split(",");
+        List<String> list = Arrays.asList(arr);
+        System.out.println(list);
     }
 }

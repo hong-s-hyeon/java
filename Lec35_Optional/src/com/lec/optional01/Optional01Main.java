@@ -44,11 +44,11 @@ public class Optional01Main {
 	public static void userStreet(User user) {
 		//  null 체크 때문에 지저분해진 코드
 
-		if(user != null){
+		if (user != null) {
 			Address address = user.getAddress();
-			if(address != null){
+			if (address != null) {
 				String street = address.getStreet();
-				if(street != null){
+				if (street != null) {
 					System.out.println(street.toUpperCase());
 				}
 			}

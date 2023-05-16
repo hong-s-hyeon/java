@@ -33,6 +33,7 @@ package com.lec.optional03;
 
 import common.Address;
 
+import java.sql.SQLOutput;
 import java.util.Optional;
 
 // https://multifrontgarden.tistory.com/131?category=471239
@@ -45,8 +46,8 @@ public class Optional03Main {
 		Address addr1 = new Address("역삼로");
 		Address addr2 = null;
 		Optional<Address> optAddr1, optAddr2;
-		
-//		optAddr2 = Optional.of(addr2);  // NPE
+
+//		optAddr2 = Optional.of(addr2);		// NullPointerException
 		optAddr2 = Optional.ofNullable(addr2);
 
 		System.out.println(optAddr2.isEmpty());
@@ -55,21 +56,32 @@ public class Optional03Main {
 		optAddr1 = Optional.of(addr1);
 		System.out.println(optAddr1.isEmpty());
 		System.out.println(optAddr1.isPresent());
+		System.out.println();
 
-		optAddr1.ifPresent(s -> System.out.println("주소:" + s));
+		System.out.println("ifPresent : 존재한다면? consumer<T> 동작");
+		optAddr1.ifPresent((s)-> System.out.println("주소 : " + s));
 		System.out.println(optAddr1.get());
-//		System.out.println(optAddr2.get());  // NPE
+//		System.out.println(optAddr2.get()); // .NoSuchElementException
+		System.out.println();
 
-		System.out.println(optAddr1.orElse(new Address("UNKNOWN")));
-		System.out.println(optAddr2.orElse(new Address("UNKNOWN")));
+		System.out.println("orElse(T)");
+		System.out.println(optAddr1.orElse(new Address("unKnown")));    // 애는 있기 때문에 있는거 나오고~
+		System.out.println(optAddr2.orElse(new Address("unKnown")));    // 얘는 없었기 때문에 T타입의 것이 나오고
+		System.out.println();
+
+		System.out.println("orElseGet(Supplier<T>");
 		System.out.println(optAddr2.orElseGet(() -> new Address("몰라요")));
+		System.out.println();
 
-//		System.out.println(optAddr2.orElseThrow());  // .NoSuchElementException
-//		System.out.println(optAddr2.orElseThrow(() -> new NullPointerException()));
+		System.out.println("orElseThrow(T)");
+//		optAddr2.orElseThrow(); // Exception in thread "main" java.util.NoSuchElementException: No value present
+//		optAddr2.orElseThrow(()-> new NullPointerException("아무것도 없어"));
 
-		System.out.println(optAddr1.filter(s -> s.getStreet().equals("역삼로")));
-		System.out.println(optAddr1.filter(s -> s.getStreet().equals("강남대로")));
+		System.out.println("filter(predicate<T>) >>> true 인 Optional 객체");
+		System.out.println(optAddr1.filter(s-> s.getStreet().equals("역삼로")));
+		System.out.println(optAddr1.filter(s-> s.getStreet().equals("강남대로")));
 
+		System.out.println("map(function(T,R) >>> Optional[R]) -> ");
 		System.out.println(optAddr1.map(s -> s.getStreet().length()));
 
 		System.out.println("\n프로그램 종료");

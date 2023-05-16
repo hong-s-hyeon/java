@@ -29,7 +29,7 @@ public class Stream03Main {
 
 	public static void main(String[] args) {
 		System.out.println("reduce() 연산");
-		
+
 		int [] arr = {1, 2, 3, 4, 5};
 		int result2;
 
@@ -37,7 +37,6 @@ public class Stream03Main {
 		// Optional 리턴
 		result2 = Arrays.stream(arr).reduce((a, b) -> a + b).orElse(0);
 		System.out.println(result2);
-
 		// 1, 2, 3, 4, 5
 		//    3
 		//       6
@@ -47,8 +46,8 @@ public class Stream03Main {
 
 		// 초깃값을 준 경우
 		// 초깃값 타입으로 리턴함!
-		result2 = Arrays.stream(arr).reduce(100, (a, b) -> a + b);
-		System.out.println(result2);  // 115
+		int result = Arrays.stream(arr).reduce(100, (a, b) -> a + b);
+		System.out.println(result);
 
 		// 100, 1, 2, 3, 4, 5
 		//    101
@@ -58,12 +57,11 @@ public class Stream03Main {
 		//              115
 
 		System.out.println();
-		// 문자열에서 길이가 가장 긴 문자열을 뽑아내기 		
+		// 문자열에서 길이가 가장 긴 문자열을 뽑아내기
 		String [] greetings = {"안녕하세요~~~", "Hello", "Good morning", "반갑습니다"};
-		String result;
-		
-		result = Arrays.stream(greetings).reduce("", (s1, s2) -> (s1.length() >= s2.length()) ? s1 : s2);
-		System.out.println(result);
+		String result3;
+		result3 = Arrays.stream(greetings).reduce("", (s1, s2) -> (s1.length() > s2.length()) ? s1 : s2);
+		System.out.println(result3);
 
 		System.out.println("\n프로그램 종료");
 	} // end main()

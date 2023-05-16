@@ -9,127 +9,137 @@ import java.util.stream.Stream;
  *  - Java8 에서 등장
  *  - 주로 람다식과 함께 활용
  *  - InputStream / OutputStream 과는 전혀 다른 객체다. 헷갈리지 말자.
- *  
+ *
  *  자료의 대상과 관계 없이 '동일한 연산'을 수행할 수 있는 기능 (자료의 추상화!)
- *  
+ *
  *  주로 '배열', '컬렉션' 을 대상으로 '스트림 생성'하여 사용
  *  '배열', '컬렉션'에 '동일한 연산'으로 수행될수 있도록 '일관성' 있는 처리 가능
  *
  *  	: 동일한 연산임에도 불구하고 자료의 대상마다 다르다면, 불편+번거로움
  *  	: ex) 배열.length vs  컬렉션.size()
- *  		  배열[index] vs  list.get(index) 
- *  
+ *  		  배열[index] vs  list.get(index)
+ *
  *  한번 생성하고 사용한 스트림은 재사용 불가
  *  스트림 연산은 기존자료를 변경하지 않음 (즉 배열에서 생성한 스트림이 원본 배열을 직접 건드리진 않음)
  *  '중간연산'과 '최종연산'으로 구분됨
  *
  *  	'중간연산'
  *  		어떤 조건으로 자료를 filtering 한다든가, 어떤 조건에 맞는 자료를 꺼내온다든다
- *  		중간연산은 체이닝 된다.  
- *  
+ *  		중간연산은 체이닝 된다.
+ *
  *  		map(Function<T, R>)
  *  		filter(Predicate<T>)
  * 			sorted()
  *  		...
- *  
- *  
+ *
+ *
  *  	'최종연산'
  *  		그 결과를 출력한다든가, 합 혹은 평균을 구하는 등의 연산 -> '결과'가 나온다
  *  		최종연산은 자료를 '소모' 하면서 연산을 수행
  *  		그래서, 맨 마지막에 등장. 최종연산후에 스트림은 더이상 다른연산 적용 불가.
  *  		최종연산이 적용(수행)되어야 모든 그 앞의 중간연산이 적용되는 '지연연산'이 발생
- *  
+ *
  *  		forEach(Consumer<T>) : 요소를 하나씩 꺼내옴
  *  		count() : 요소의 개수
  *  		sum() : 요소의 합
- *  		reduce(a, b) : 
+ *  		reduce(a, b) :
  *  		...
  *
  */
 
 public class Stream01Main {
-	public static void main(String[] args) {
-		System.out.println("Stream01");
-		
-		List<String> sList = Arrays.asList("John", "Susan", "Tom", "Michael");
-		Customer[] arrCustomer = {
-				new Customer("John", 32),
-				new Customer("Susan", 22),
-				new Customer("Tom", 55)
-		};
-		
+    public static void main(String[] args) {
+        System.out.println("Stream01");
 
-		// 문자열의 길이 5이상인 요소만 출력하기
-		for(int i = 0; i < sList.size(); i++){
-			if(sList.get(i).length() >= 5)
-				System.out.println(sList.get(i));
-		}
-
-		sList.stream()   // 컬렉션에서 스트림 생성, Stream<T> 리턴
-				.filter(s -> s.length() >= 5)  // 중간연산
-				.forEach(s -> System.out.println(s));  // 최종연산
-				;
-
-		// 문자열의 개수 출력하기
-		sList.stream()   // <- "John", "Susan", "Tom", "Michael"
-				.map(s -> s.length())  // <- 4, 5, 3, 7
-				.forEach(n -> System.out.print(n + " "))
-				;
-
-		System.out.println();
+        List<String> sList = Arrays.asList("John", "Susan", "Tom", "Michael");
+        Customer[] arrCustomer = {
+                new Customer("John", 32),
+                new Customer("Susan", 22),
+                new Customer("Tom", 55)
+        };
 
 
-		// 고객클래스에서 고객이름만 가져오기
-		Arrays.stream(arrCustomer)  // 배열에서 스트림 생성. Stream<Customer> 리턴
-				.map(c -> c.getName())  // 중간연산
-				.forEach(s -> System.out.println(s));  // 최종연산
-				;
+        System.out.println();
+        // 문자열의 길이 5이상인 요소만 출력하기
+        System.out.println("기존의 방식");
+        for (int i = 0; i < sList.size(); i++) {
+            if (sList.get(i).length() >= 5) {
+                System.out.println(sList.get(i));
+            }
+        }
+        System.out.println();
+        System.out.println("stream 방식");
+        sList.stream()                                      // 컬렉션에서 스트림 생성, Stream<T> 리턴
+                .filter(s -> s.length() >= 5)               // 중간연산
+                .forEach(s -> System.out.println(s));       // 최종연산
+        System.out.println();
 
-		System.out.println();
-		sList.stream().sorted().forEach(s -> System.out.print(s + " "));
-		System.out.println();
-		System.out.println(sList.stream().filter(s -> s.length() >= 5).count());
 
-		System.out.println();
-		// 한번 최종연산한 스트림은 다시 사용 불가
-		Stream<Customer> stream = Arrays.stream(arrCustomer);
-		stream.forEach(s -> System.out.println(s.getAge()));
-//		stream.forEach(s -> System.out.println(s.getAge()));  // 에러 IllegalStateException
+        // 문자열의 개수 출력하기
 
-		// 다시 Stream 을 생성해선 사용 가능
-		stream = Arrays.stream(arrCustomer);
-		stream.forEach(s -> System.out.println(s.getAge()));
-		
-		System.out.println("\n프로그램 종료");
-	} // end main
+        sList.stream()                                      // <- "John", "Susan", "Tom", "Michael"
+                .map(s -> s.length())                       // <- 4, 5, 3, 7
+                .forEach(n -> System.out.print(n + " "));
+
+        System.out.println();
+
+        // 고객클래스에서 고객이름만 가져오기
+        Arrays.stream(arrCustomer)                          // 배열에서 스트림 생성. Stream<Customer> 리턴
+                .map(customer-> customer.getName())         // 중간연산
+                .forEach(name -> System.out.println(name));
+
+        System.out.println();
+        System.out.println("정렬하기");
+        sList.stream().sorted().forEach(s-> System.out.print(s + " "));
+
+        System.out.println("최종연산인 count()");
+        long number = sList.stream().filter(s -> s.length() >= 5).count();
+        System.out.println(number);
+
+        System.out.println();
+        // 한번 최종연산한 스트림은 다시 사용 불가
+        Stream<Customer> stream = Arrays.stream(arrCustomer);
+        stream.forEach(s-> System.out.println(s.getAge()));
+//        stream.forEach(s-> System.out.println(s.getAge()));
+        // Error!!!
+        // IllegalStateException: stream has already been operated upon or closed
+
+        System.out.println();
+        // 다시 만들면 사용 가능
+        stream = Arrays.stream(arrCustomer);
+        stream.forEach(s-> System.out.println(s.getAge()));
+
+
+        System.out.println("\n프로그램 종료");
+    } // end main
 } // end class
 
-class Customer{
-	String name;
-	int age;
-	
-	public Customer(String name, int age) {
-		this.name = name;
-		this.age = age;
-	}
+class Customer {
+    String name;
+    int age;
 
-	public String getName() {
-		return name;
-	}
+    public Customer(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-	
-	
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+
 } // end Customer
 
 
