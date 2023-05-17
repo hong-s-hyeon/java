@@ -71,6 +71,7 @@ public class DB05Main implements Query {
 			// 2. 쿼리연산(들) 수행
 			stmt.executeUpdate("INSERT INTO test_member VALUES(123, 'aaa', now())");
 			stmt.executeUpdate("INSERT INTO test_member VALUES(456, 'bbb', now())");
+			
 			//stmt.executeUpdate("INSERT INTO test_member VALUES('abc', 'ccc', now())");
 			stmt.executeUpdate("INSERT INTO test_member VALUES(777, 'ddd', now())");
 			

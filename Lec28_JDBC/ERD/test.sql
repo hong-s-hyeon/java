@@ -1,13 +1,13 @@
-SELECT * FROM t_student;
+select * from phonebook;
 
-DROP TABLE IF EXISTS test_member;
-CREATE TABLE test_member(
+drop table if exists test_member;
+
+create table test_member(
     mb_no int PRIMARY KEY AUTO_INCREMENT,
     mb_name varchar(40),
     mb_regdate datetime
 );
 
-insert INTO TEST_MEMBER(MB_NAME)
-VALUES('킹콩'), ('고질라');
+INSERT INTO test_member(mb_name) values('킹콩'), ('고질라');
 
-SELECT * FROM test_member;
+select * from test_member;

@@ -28,6 +28,7 @@
       <module fileurl="file://$PROJECT_DIR$/Lec24_Lambda/Lec24_Lambda.iml" filepath="$PROJECT_DIR$/Lec24_Lambda/Lec24_Lambda.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lec25_Thread/Lec25_Thread.iml" filepath="$PROJECT_DIR$/Lec25_Thread/Lec25_Thread.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lec26_FileIO/Lec26_FileIO.iml" filepath="$PROJECT_DIR$/Lec26_FileIO/Lec26_FileIO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lec28_JDBC/Lec28_JDBC.iml" filepath="$PROJECT_DIR$/Lec28_JDBC/Lec28_JDBC.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lec31_Java_Util/Lec31_Java_Util.iml" filepath="$PROJECT_DIR$/Lec31_Java_Util/Lec31_Java_Util.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lec35_Optional/Lec35_Optional.iml" filepath="$PROJECT_DIR$/Lec35_Optional/Lec35_Optional.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lec36_Stream/Lec36_Stream.iml" filepath="$PROJECT_DIR$/Lec36_Stream/Lec36_Stream.iml" />
